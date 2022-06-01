@@ -97,7 +97,7 @@ class App extends Component {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response) {
+        if (response.outputs[0].data.regions) {
           fetch(`${process.env.REACT_APP_API_ADDRESS}/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
@@ -110,8 +110,8 @@ class App extends Component {
               this.setState(Object.assign(this.state.user, { entries: count }));
             })
             .catch(console.log);
+          this.displayFaceBox(this.calculateFaceLocation(response));
         }
-        this.displayFaceBox(this.calculateFaceLocation(response));
       })
       .catch((err) => console.log(err));
   };
