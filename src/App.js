@@ -99,7 +99,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('https://pacific-earth-47843.herokuapp.com/imageurl', {
+    fetch(`${process.env.REACT_APP_API_ADDRESS}/imageurl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -109,7 +109,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch('https://pacific-earth-47843.herokuapp.com/image', {
+          fetch(`${process.env.REACT_APP_API_ADDRESS}/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
