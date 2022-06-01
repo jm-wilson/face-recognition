@@ -1,6 +1,6 @@
-import React from 'react';
+import { Component } from 'react';
 
-class SignIn extends React.Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,18 +9,12 @@ class SignIn extends React.Component {
     };
   }
 
-  onEmailChange = (event) => {
-    this.setState({ signInEmail: event.target.value });
-  };
+  onEmailChange = (event) => this.setState({ signInEmail: event.target.value });
 
-  onPasswordChange = (event) => {
-    this.setState({ signInPassword: event.target.value });
-  };
+  onPasswordChange = (event) => this.setState({ signInPassword: event.target.value });
 
   handleKeypress = (event) => {
-    if (event.keyCode === 13) {
-      this.onSubmitSignIn();
-    }
+    if (event.keyCode === 13) this.onSubmitSignIn();
   };
 
   onSubmitSignIn = () => {

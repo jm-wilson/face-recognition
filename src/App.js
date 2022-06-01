@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Particles from 'react-tsparticles';
-import './App.css';
-import Navigation from './components/Navigation/Navigation';
+
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import Logo from './components/Logo/Logo';
+import Navigation from './components/Navigation/Navigation';
 import Rank from './components/Rank/Rank';
-import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
+import SignIn from './components/SignIn/SignIn';
+
+import './App.css';
 
 const particlesOptions = {
   particles: {
@@ -46,20 +48,7 @@ const initialState = {
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {},
-      route: 'signIn',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: '',
-      },
-    };
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -146,10 +135,7 @@ class App extends Component {
           <div>
             <Logo />
             <Rank name={this.state.user.name} entries={this.state.user.entries} />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
+            <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : this.state.route === 'register' ? (
